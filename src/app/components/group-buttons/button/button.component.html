@@ -1,0 +1,6 @@
+<button (click)="action(value)" [ngClass]="type">
+  <span *ngIf="value in icons; else text"></span>
+  <ng-template #text>
+    <span>{{value}}</span>
+  </ng-template>
+</button>

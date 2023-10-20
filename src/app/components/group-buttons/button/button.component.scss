@@ -1,0 +1,37 @@
+@import '../../variables.scss';
+
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: none;
+}
+
+.clean {
+  background: $purple-400;
+  border-radius: 8px;
+}
+.operator {
+  background: $purple-100;
+  border-radius: 8px;
+}
+.number {
+  background: $purple-500;
+  border-radius: 16px;
+}
+.equal {
+  background: $green-500;
+  border-radius: 8px;
+}
+.other {
+  background: rgba(94, 80, 178, 0.50);
+  border-radius: 16px;
+}
+.value {
+  color: #E5E1FF;
+  font-size: 32;
+  font-family: "IBMPlexMono-Bold";
+}
