@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InputService } from './input.service';
+import { HandlerInputService } from './handler-input.service';
 
-describe('InputService', () => {
-  let service: InputService;
+describe('HandlerInputService', () => {
+  let service: HandlerInputService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(InputService);
+    service = TestBed.inject(HandlerInputService);
   });
 
   it('should be created', () => {

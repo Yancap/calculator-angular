@@ -6,6 +6,8 @@ import { ViewComponent } from './components/view/view.component';
 import { GroupButtonsComponent } from './components/group-buttons/group-buttons.component';
 import { ResultViewComponent } from './components/result-view/result-view.component';
 import { ButtonComponent } from './components/group-buttons/button/button.component';
+import { InputContextService } from './services/input-context.service';
+import { HandlerInputService } from './services/handler-input.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { ButtonComponent } from './components/group-buttons/button/button.compon
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [InputContextService, HandlerInputService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
