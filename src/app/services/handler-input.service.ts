@@ -5,7 +5,7 @@ import { InputContextService } from './input-context.service';
   providedIn: 'root'
 })
 export class HandlerInputService {
-  private setInput!: {
+  private setInput: {
     (action: string): void;
     (action: (value: string) => string): void;
   };
@@ -24,7 +24,7 @@ export class HandlerInputService {
   private getResult!: () => void;
   private controlPoint!: boolean;
   private pressEqual!: boolean;
-  private result!: string;
+  private result!: number;
 
   constructor() { 
     const {
@@ -37,14 +37,24 @@ export class HandlerInputService {
       pressEqual,
       result
     } = InputContextService;
+
+    this.setInput = setInput;
+    this.setOnScreen = setOnScreen;
+    this.setControlPoint = setControlPoint;
+    this.controlPoint = controlPoint;
+    this.getResult = getResult;
+    this.setPressEqual = setPressEqual;
+    this.pressEqual = pressEqual;
+    this.result = result;
+    
   }
-  public handleClean() {
+  public handleClean = () => {
     this.setInput("");
     this.setOnScreen('');
     this.setControlPoint(true);
     this.setPressEqual(false)
   }
-  public handleBackspace() {
+  public handleBackspace = () => {
     this.setInput(input => {
       if (input[input.length - 1] === '.') {
         this.setControlPoint(true);
@@ -60,8 +70,8 @@ export class HandlerInputService {
       return onScreen.substring(0, onScreen.length - 1)
     });
   }
-  public handleAddValue(value: string) {
-     
+  public handleAddValue = (value: string) => {
+    
     let valuesForInput =
       value === 'mod'
         ? '%'
@@ -81,11 +91,11 @@ export class HandlerInputService {
     this.setInput(input => this.handleInput(input, valuesForInput).replace(/[x]/g, '*'));
     this.setOnScreen(onScreen => this.handleInput(onScreen, valuesForOnScreen));
   }
-  public handleEqual(value: string) {
+  public handleEqual = (value: string) => {
     this.setPressEqual(true)
     this.getResult();
   }
-  public handleInput(state: string, value: string) {
+  public handleInput = (state: string, value: string) => {
     if(this.pressEqual) {
       this.setPressEqual(false)
       state = String(this.result)

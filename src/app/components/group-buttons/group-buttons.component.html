@@ -1,17 +1,31 @@
-<div class="group">
-  <div class="row">
-    <app-button value="1" type="number" [action]="handleBackspace"/>
-  </div>
-  <div class="row">
 
+  <div class="row">
+    <app-button value="clean" type="clean" [action]="handleClean"/>
+    <app-button value="parentheses" type="operator" [action]="handleAddValue"/>
+    <app-button value="mod" type="operator" [action]="handleAddValue"/>
+    <app-button value="division" type="operator" [action]="handleAddValue"/>
   </div>
   <div class="row">
-
+    <app-button value="7" type="number" [action]="handleAddValue"/>
+    <app-button value="8" type="number" [action]="handleAddValue"/>
+    <app-button value="9" type="number" [action]="handleAddValue"/>
+    <app-button value="multiply" type="operator" [action]="handleAddValue"/>
   </div>
   <div class="row">
-
+    <app-button value="4" type="number" [action]="handleAddValue"/>
+    <app-button value="5" type="number" [action]="handleAddValue"/>
+    <app-button value="6" type="number" [action]="handleAddValue"/>
+    <app-button value="minus" type="operator" [action]="handleAddValue"/>
   </div>
   <div class="row">
-
+    <app-button value="3" type="number" [action]="handleAddValue"/>
+    <app-button value="2" type="number" [action]="handleAddValue"/>
+    <app-button value="1" type="number" [action]="handleAddValue"/>
+    <app-button value="plus" type="operator" [action]="handleBackspace"/>
   </div>
-</div>
+  <div class="row">
+    <app-button value="backspace" type="other" [action]="handleBackspace"/>
+    <app-button value="1" type="number" [action]="handleAddValue"/>
+    <app-button value="." type="other" [action]="handleAddValue"/>
+    <app-button value="equal" type="equal" [action]="handleEqual"/>
+  </div>

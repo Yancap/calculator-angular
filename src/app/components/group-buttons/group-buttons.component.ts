@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HandlerInputService } from './../../services/handler-input.service';
 
 @Component({
@@ -24,14 +24,10 @@ export class GroupButtonsComponent {
       handleInput
     } = handlerInputService;
 
-    this.handleBackspace = handleBackspace;
-    this.handleAddValue = handleAddValue;
-    this.handleClean = handleClean;
-    this.handleEqual = handleEqual;
-    this.handleInput = handleInput;
-  }
-
-  handler() {
-    this.handlerInputService.handleBackspace();
+    this.handleBackspace = handlerInputService.handleBackspace;
+    this.handleAddValue = handlerInputService.handleAddValue;
+    this.handleClean = handlerInputService.handleClean;
+    this.handleEqual = handlerInputService.handleEqual;
+    this.handleInput = handlerInputService.handleInput;
   }
 }

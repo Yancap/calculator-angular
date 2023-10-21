@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
+import { InputContextService } from 'src/app/services/input-context.service';
 
 @Component({
   selector: 'result-view',
   templateUrl: './result-view.component.html',
   styleUrls: ['./result-view.component.scss']
 })
-export class ResultViewComponent {
+export class ResultViewComponent implements DoCheck {
+  public onScreen!: string;
+  public result!: number;
+  public getResult!: () => void;
+  public input!: string;
+  public pressEqual!: boolean;
 
+  constructor(){
+    const {onScreen, result, getResult, input, pressEqual} = InputContextService;
+    this.onScreen = onScreen;
+    this.result = result;
+    this.getResult = getResult;
+    this.pressEqual = pressEqual;
+    this.input = input;
+  }
+
+  ngDoCheck() {
+    this.onScreen = InputContextService.onScreen;
+    this.result = InputContextService.result
+  }
 }

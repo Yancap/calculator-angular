@@ -14,11 +14,15 @@ main {
   width: 100vw;
 }
 
+span {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
   max-width: 100vw;
   @media screen and (min-width: 500px) {
-    max-width: 430px;
+    max-width: 400px;
   }
 }

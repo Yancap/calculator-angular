@@ -5,9 +5,18 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 60px;
+  height: 4rem;
+  width: 4.5rem;
   border: none;
+
+  @media screen and (max-width: 315px) {
+    height: 3rem;
+    width: 2.75rem;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 4rem;
+  }
 }
 
 .clean {

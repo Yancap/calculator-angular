@@ -1,1 +1,9 @@
-<p>result-view works!</p>
+
+<div>
+  <span [ngClass]="pressEqual ? 'result' : 'equation'">
+    {{onScreen}}
+  </span>
+</div>
+<span [ngClass]="pressEqual ? 'equation' : 'result'">
+  {{result?.toLocaleString()}}
+</span>
