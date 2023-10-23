@@ -8,17 +8,18 @@ import { ResultViewComponent } from './components/result-view/result-view.compon
 import { ButtonComponent } from './components/group-buttons/button/button.component';
 import { InputContextService } from './services/input-context.service';
 import { HandlerInputService } from './services/handler-input.service';
+import { CommonModule } from '@angular/common';
+import { GroupButtonsModule } from './components/group-buttons/group-buttons.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewComponent,
-    GroupButtonsComponent,
     ResultViewComponent,
-    ButtonComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    GroupButtonsModule
   ],
   providers: [InputContextService, HandlerInputService],
   bootstrap: [AppComponent]

@@ -33,7 +33,7 @@ group-buttons{
 }
 
 result-view {
-  background: #0F0D1D;
+  background: #17132a;
   flex-grow: 3;
   padding: 1.2rem .5rem;
   display: flex;
@@ -42,9 +42,11 @@ result-view {
   justify-content: flex-end;
   padding: 24px 16px;
   gap: 4;
+  word-break: break-all;
 }
 
 header {
   flex-grow: 1;
-  background: #0F0D1D;
+  background: #17132a;
+  height: 2rem;
 }

@@ -9,7 +9,7 @@ export class InputContextService {
   public static input: string = "";
   public static onScreen: string = "";
   public static result: number = 0;
-  public static controlPoint: boolean = false;
+  public static controlPoint: boolean = true;
   public static pressEqual: boolean = false;
 
   public static setInput(action: string): void;

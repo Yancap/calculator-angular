@@ -24,10 +24,10 @@ export class GroupButtonsComponent {
       handleInput
     } = handlerInputService;
 
-    this.handleBackspace = handlerInputService.handleBackspace;
-    this.handleAddValue = handlerInputService.handleAddValue;
-    this.handleClean = handlerInputService.handleClean;
-    this.handleEqual = handlerInputService.handleEqual;
-    this.handleInput = handlerInputService.handleInput;
+    this.handleBackspace = handleBackspace;
+    this.handleAddValue = handleAddValue;
+    this.handleClean = handleClean;
+    this.handleEqual = handleEqual;
+    this.handleInput = handleInput;
   }
 }

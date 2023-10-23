@@ -8,7 +8,7 @@ import { InputContextService } from 'src/app/services/input-context.service';
 })
 export class ResultViewComponent implements DoCheck {
   public onScreen!: string;
-  public result!: number;
+  public result!: number | undefined;
   public getResult!: () => void;
   public input!: string;
   public pressEqual!: boolean;
@@ -23,7 +23,9 @@ export class ResultViewComponent implements DoCheck {
   }
 
   ngDoCheck() {
+    this.getResult();
     this.onScreen = InputContextService.onScreen;
     this.result = InputContextService.result
+
   }
 }

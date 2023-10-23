@@ -1,16 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnInit {
   @Input() public value!: string;
   @Input() public type!: string;
   @Input() public action!: (value: string) => void;
-
-  public icons = {
+  
+  public icons: {
+  [key: string]: string;
+  } = {
     clean: '',
     division: '',
     equal: '',
@@ -21,4 +23,10 @@ export class ButtonComponent {
     multiply: '',
     backspace: ''
   };
+
+  public isContains!: boolean;
+
+ngOnInit(): void {
+  this.isContains = this.value in this.icons;
+}
 }

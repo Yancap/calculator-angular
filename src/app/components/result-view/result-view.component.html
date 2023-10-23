@@ -1,6 +1,10 @@
 
 <div>
-  <span [ngClass]="pressEqual ? 'result' : 'equation'">
+  <span [ngClass]="pressEqual ? 'result' : 'equation'" [style.fontSize]="
+    onScreen.length < 12 && !pressEqual ? '40px' : 
+    onScreen.length < 20 && !pressEqual ? '28px' : 
+    !pressEqual && '24px'
+  ">
     {{onScreen}}
   </span>
 </div>

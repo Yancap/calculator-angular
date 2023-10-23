@@ -1,1 +1,1 @@
-pesquisar sobre como passar uma arrow function como parametros para simular um State
+ajeitar os parenteses e o ponto

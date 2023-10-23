@@ -17,6 +17,10 @@ button {
   @media screen and (max-width: 350px) {
     width: 4rem;
   }
+
+  &:hover{
+    filter: contrast(1.4);
+  }
 }
 
 .clean {
@@ -39,8 +43,14 @@ button {
   background: rgba(94, 80, 178, 0.50);
   border-radius: 16px;
 }
-.value {
+span {
   color: #E5E1FF;
-  font-size: 32;
-  font-family: "IBMPlexMono-Bold";
+  font-size: 2rem;
+  font-family: "IBM Plex Mono";
+  font-weight: bold;
+}
+
+div{
+  display: grid;
+  place-items: center;
 }
