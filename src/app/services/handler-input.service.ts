@@ -22,30 +22,21 @@ export class HandlerInputService {
     (action: (value: boolean) => boolean): void;
   };
   private getResult!: () => void;
-  private controlPoint!: boolean;
-  private pressEqual!: boolean;
-  private result!: number;
 
   constructor() { 
     const {
       setInput,
       setOnScreen,
       setControlPoint,
-      controlPoint,
       getResult,
-      setPressEqual,
-      pressEqual,
-      result
+      setPressEqual
     } = InputContextService;
 
     this.setInput = setInput;
     this.setOnScreen = setOnScreen;
     this.setControlPoint = setControlPoint;
-    this.controlPoint = controlPoint;
     this.getResult = getResult;
     this.setPressEqual = setPressEqual;
-    this.pressEqual = pressEqual;
-    this.result = result;
     
   }
   public handleClean = () => {
@@ -86,19 +77,21 @@ export class HandlerInputService {
         : value;
 
     let valuesForOnScreen =
-      value === 'division' ? '÷' : value === 'multiply' ? 'x' : valuesForInput;
-
-    this.setInput(input => this.handleInput(input, valuesForInput).replace(/[x]/g, '*'));
+      value === 'division' ? '÷' : value === 'multiply' ? 'x' : 
+      value === '.' ? ',' : valuesForInput;
     this.setOnScreen(onScreen => this.handleInput(onScreen, valuesForOnScreen));
+    this.setInput(input => this.handleInput(input, valuesForInput).replace(/[x]/g, '*'));
   }
-  public handleEqual = (value: string) => {
-    this.setPressEqual(true)
-    this.getResult();
+  public handleEqual = () => {
+    if(!isNaN(Number(InputContextService.input[InputContextService.input.length - 1]))) {
+      this.setPressEqual(true);
+      this.getResult();
+    }
   }
   public handleInput = (state: string, value: string) => {
-    if(this.pressEqual) {
+    if(InputContextService.pressEqual) {
       this.setPressEqual(false)
-      state = String(this.result)
+      state = String(InputContextService.result)
     }
     
     if (state === '') {
@@ -111,37 +104,41 @@ export class HandlerInputService {
       return state + value;
     } else {
       if (value === '.') {
-        if (isNaN(Number(state[state.length - 1])) && this.controlPoint) {
+        if (isNaN(Number(state[state.length - 1])) && InputContextService.controlPoint) {
           this.setControlPoint(false);
           return state + '0.';
-        } else if (this.controlPoint) {
+        } else if (InputContextService.controlPoint) {
           this.setControlPoint(false);
+          
           return state + value;
         }
       } else if (value === 'parentheses') {
         this.setControlPoint(true);
-        if (!isNaN(Number(state[state.length - 1])) && !state.includes('('))
+        if (!isNaN(Number(state[state.length - 1])) && !state.includes('(')){
           return state + 'x' + '(';
-        else if (!state.includes('(')) return state + '(';
+        }else if (!state.includes('(')){
+          return state + '('
+        }
         else {
-          let quantityR = state.match(/[(]/g)?.length; // (
-          let quantityL = state.match(/[)]/g)?.length; // )
+          let quantityR = state.match(/[(]/g)?.length ?? 0 ; // (
+          let quantityL = state.match(/[)]/g)?.length ?? 0; // )
 
           if (
             isNaN(Number(state[state.length - 1])) &&
             state[state.length - 1] !== '(' &&
             state[state.length - 1] !== ')'
-          )
-            return state + '(';
+          ) return state + '(' 
           else if (state[state.length - 1] === '(') return state + '(';
-          else if (quantityR !== quantityL) return state + ')';
+          else if (quantityR > quantityL) return state + ')';
           else if (state[state.length - 1] === ')') return state + 'x' + '(';
-          else return state + ')';
+          else if (!isNaN(Number(state[state.length - 1]))) return state + 'x' + '(';
+          else return state + '(';
         }
       } else {
         this.setControlPoint(true);
         if (!isNaN(Number(state[state.length - 1]))) return state + value;
         if (state[state.length - 1] === ')') return state + value;
+        if (state[state.length - 1] === '(' && value === "-") return state + value;
       }
     }
     return state;

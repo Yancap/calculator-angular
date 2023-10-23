@@ -26,6 +26,12 @@ export class ResultViewComponent implements DoCheck {
     this.getResult();
     this.onScreen = InputContextService.onScreen;
     this.result = InputContextService.result
-
+    this.pressEqual = InputContextService.pressEqual;
+    if(this.onScreen.length > 12 && this.onScreen.length < 20) {
+      document.documentElement.style.setProperty('--font-size-eq', '28px')
+    } else if(this.onScreen.length > 20) {
+      document.documentElement.style.setProperty('--font-size-eq', '20px')
+      document.documentElement.style.setProperty('--font-size-result', '16px')
+    }
   }
 }

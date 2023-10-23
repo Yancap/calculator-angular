@@ -1,11 +1,30 @@
 @import '../variables.scss';
-
+:root {
+  --font-size-eq: 40px;
+  --font-size-result: 20px;
+}
 
 .equation {
   color: #E5E1FF;
-  font-size: 40px;
+  font-size: var(--font-size-eq);
+  animation: growEq .5s ;
+  @keyframes growEq {
+    from {
+      font-size: var(--font-size-result);
+    } to {
+      font-size: var(--font-size-eq);
+    }
+  }
 }
 .result {
   color: #5E50B2;
-  font-size: 20px;
+  font-size: var(--font-size-result);
+  animation: growR .5s ;
+  @keyframes growR {
+    from {
+      font-size: var(--font-size-eq);
+    } to {
+      font-size: var(--font-size-result);
+    }
+  }
 }

@@ -3,11 +3,15 @@
   <span [ngClass]="pressEqual ? 'result' : 'equation'" [style.fontSize]="
     onScreen.length < 12 && !pressEqual ? '40px' : 
     onScreen.length < 20 && !pressEqual ? '28px' : 
-    !pressEqual && '24px'
+    !pressEqual ? '24px' : null
   ">
     {{onScreen}}
   </span>
 </div>
-<span [ngClass]="pressEqual ? 'equation' : 'result'">
+<span [ngClass]="pressEqual ? 'equation' : 'result'" [style.fontSize]="
+onScreen.length < 12 && pressEqual ? '40px' : 
+onScreen.length < 20 && pressEqual ? '28px' : 
+pressEqual && '24px'
+">
   {{result?.toLocaleString()}}
 </span>
