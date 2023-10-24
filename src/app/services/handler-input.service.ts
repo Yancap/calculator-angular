@@ -95,7 +95,12 @@ export class HandlerInputService {
     }
     
     if (state === '') {
-      if (!isNaN(Number(value))) return state + value;
+      if (!isNaN(Number(value))) {
+        if (Number(value) === 0) {
+          return state;
+        }
+        return state + value;
+      } 
       else if (value == '-') return state + value;
       return state;
     }

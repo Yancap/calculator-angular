@@ -23,7 +23,7 @@ export class GroupButtonsComponent {
       handleEqual,
       handleInput
     } = handlerInputService;
-
+    
     this.handleBackspace = handleBackspace;
     this.handleAddValue = handleAddValue;
     this.handleClean = handleClean;
