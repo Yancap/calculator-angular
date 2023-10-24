@@ -1,1 +1,0 @@
-ajeitar os parenteses e o ponto
